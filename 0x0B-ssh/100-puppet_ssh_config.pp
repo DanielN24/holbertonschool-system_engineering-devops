@@ -1,10 +1,11 @@
-file { 'password':
+# practice using Puppet to make changes to our configuration file
+file { 'ident':
   ensure => 'present',
   path   => '/etc/ssh/ssh_config',
-  content   => '    IdentityFile ~/.ssh/holberton',
+  line   => '    PasswordAuthentication no',
 }
-
-exec { 'ident':
+file { 'pass':
+  ensure => 'present',
   path   => '/etc/ssh/ssh_config',
-  content   => '    PasswordAuthentication no',
+  line   => '    IdentityFile ~/.ssh/school',
 }
