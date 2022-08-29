@@ -1,12 +1,16 @@
 #!/usr/bin/env bash
-# A Bash script that configures a new Ubuntu machine to respect the requirements:
-#+ Install nginx
-#+ Nginx should be listening on port 80
-#+ When querying Nginx at its root / with a GET request (requesting a page) using curl, it must return a page that contains the string Hello World
-sudo apt-get update
-sudo apt-get install -y nginx
-sudo rm /var/www/html/*
-sudo touch /var/www/html/index.html
-sudo chmod 666 /var/www/html/index.html
-sudo echo "Hello World!" >> /var/www/html/index.html
-sudo service nginx restart
+# - Install nginx on your web-01 server
+# - Nginx should be listening on port 80
+# - When querying Nginx at its root / with a GET request (requesting a page) using curl,
+#   it must return a page that contains the string Hello World
+# - As an answer file, write a Bash script that configures a new Ubuntu machine to respect
+#   above requirements (this script will be run on the server itself)
+# - You can’t use systemctl for restarting nginx
+
+if [ ! -x /usr/sbin/nginx ]; then
+    sudo apt -y update
+    sudo apt install -y --allow-downgrades nginx
+    sudo ufw allow 'Nginx HTTP'
+fi
+echo "Hello World!" | sudo tee /var/www/html/index.html
+sudo service nginx start
