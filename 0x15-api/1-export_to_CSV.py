@@ -22,11 +22,11 @@ if __name__ == "__main__":
     complete = todos[1]['completed']
     title = todos[1]['title']
 
-    with open('USER_ID.csv', mode='w') as csv_file:
+    with open('{}.csv'.format(employee_id), mode='w') as csv_file:
         user_writer = csv.writer(
             csv_file, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
         for tasks in todos:
             user_writer.writerow(
-                ['"{}"'.format(tasks['userId']), '"{}"'.format(username),
+                ['"{}"'.format(employee_id), '"{}"'.format(username),
                  '"{}"'.format(tasks['completed']), '"{}"'.format(
                         tasks['title'])])
