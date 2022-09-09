@@ -9,14 +9,16 @@ import json
 
 
 if __name__ == "__main__":
-    
+
     employee_id = argv[1]
-    rest_api_users = "https://jsonplaceholder.typicode.com/users/{}".format(employee_id)
-    rest_api_all = "https://jsonplaceholder.typicode.com/users/{}/todos".format(employee_id)
+    rest_api_users = "https://jsonplaceholder.typicode.com/users/{}".format(
+        employee_id)
+    restapi_all = "https://jsonplaceholder.typicode.com/users/{}/todos".format(
+        employee_id)
 
     req_users = requests.get(rest_api_users).json()
-    todos = requests.get(rest_api_all).json()
-    
+    todos = requests.get(restapi_all).json()
+
     EMPLOYEE_NAME = req_users['name']
     NUMBER_OF_DONE_TASKS = 0
     TOTAL_NUMBER_OF_TASKS = 0
