@@ -26,7 +26,7 @@ if __name__ == "__main__":
     for task in todos:
         if task['completed'] is True:
             tasks.append(task['title'])
-    print("Employee {} is done with tasks {}/{}: ".format(
+    print("Employee {} is done with tasks({}/{}): ".format(
         EMPLOYEE_NAME, NUMBER_OF_DONE_TASKS, TOTAL_NUMBER_OF_TASKS))
     for task in tasks:
         print("\t {}".format(task))
