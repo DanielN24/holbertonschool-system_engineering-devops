@@ -3,6 +3,7 @@
 using this REST API, for a given employee ID
 returns information about his/her TODO list progress
 """
+from re import T
 import requests
 from sys import argv
 
@@ -26,6 +27,9 @@ if __name__ == "__main__":
     for task in todos:
         if task['completed'] is True:
             tasks.append(task['title'])
+            NUMBER_OF_DONE_TASKS += 1
+        if task['completed'] is True or task['completed'] is False:
+            TOTAL_NUMBER_OF_TASKS += 1
     print("Employee {} is done with tasks({}/{}):".format(
         EMPLOYEE_NAME, NUMBER_OF_DONE_TASKS, TOTAL_NUMBER_OF_TASKS))
     for task in tasks:
