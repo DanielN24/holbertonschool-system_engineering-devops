@@ -8,7 +8,7 @@ import requests
 
 if __name__ == "__main__":
 
-    rest_api_users = "https://jsonplaceholder.typicode.com/users/"
+    rest_api_users = "https://jsonplaceholder.typicode.com/users"
     req_users = requests.get(rest_api_users).json()
 
     with open("todo_all_employees.json", "w") as jsonfile:
